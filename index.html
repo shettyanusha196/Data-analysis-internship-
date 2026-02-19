@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            margin-top: 100px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 150px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎯 Number Guessing Game</h2>
+    <p>Guess a number between 1 and 100</p>
+    
+    <input type="number" id="guessInput" placeholder="Enter your guess">
+    <br>
+    <button onclick="checkGuess()">Guess</button>
+    
+    <p id="result"></p>
+</div>
+
+<script>
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    function checkGuess() {
+        const userGuess = Number(document.getElementById("guessInput").value);
+        const result = document.getElementById("result");
+
+        if (!userGuess) {
+            result.textContent = "Please enter a valid number!";
+        } else if (userGuess === randomNumber) {
+            result.textContent = "🎉 Correct! You guessed the number!";
+            result.style.color = "green";
+        } else if (userGuess < randomNumber) {
+            result.textContent = "📉 Too low! Try a higher number.";
+            result.style.color = "red";
+        } else {
+            result.textContent = "📈 Too high! Try a lower number.";
+            result.style.color = "red";
+        }
+    }
+</script>
+
+</body>
+</html>
